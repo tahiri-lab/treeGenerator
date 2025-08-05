@@ -737,8 +737,8 @@ void computeCriteria(double ** Matrix1, double ** Matrix2, int size,struct CRITE
 	double LS, BD = 0, RF;
 
 	//= robinson and foulds
-	m = Bipartition_Table_rf(Matrix1,aCrit->B,aCrit->PLACE,size);
-	mI = Bipartition_Table_rf(Matrix2,aCrit->BI,aCrit->PLACEI,size);
+	m = Bipartition_Table(Matrix1,aCrit->B,aCrit->PLACE,size);
+	mI = Bipartition_Table(Matrix2,aCrit->BI,aCrit->PLACEI,size);
 
 	/*for(int k=1; k<=m; k++){
 		for(int l=1; l<=size; l++){printf("%d \t", aCrit->B[aCrit->PLACE[k]][l]);}
@@ -751,7 +751,7 @@ void computeCriteria(double ** Matrix1, double ** Matrix2, int size,struct CRITE
 		printf("\n");
 	}*/
 	//printf("\n m%d et mI%d", m, mI);
-	RF = Table_Comparaison_rf(aCrit->B,aCrit->BI,aCrit->PLACE,aCrit->PLACEI,m,mI,size);
+	RF = Table_Comparaison(aCrit->B,aCrit->BI,aCrit->PLACE,aCrit->PLACEI,m,mI,size);
 
 	//= least-squares
 	LS = 0.0;

@@ -1057,7 +1057,8 @@ void createClusters(string treeRef, int nbSpecies, int nbArbres, double lowLimit
 
 int main(int nargs,char ** argv)
 {
-	//if(nargs == 1){ printf("nope !"); exit(-1);}
+	if(nargs == 1){ printf("nope !\n"); exit(-1);}
+	//printf(argv[1]);
 	//int nb_Clusters = atoi(argv[1]), nb_Feuilles = atoi(argv[2]), noiseLvl = atoi(argv[3]), nbTrees = atoi(argv[4]);
 	//int nbTreesTot = (nbTrees+1) * nb_Clusters;
 	int nbarbres[10];
