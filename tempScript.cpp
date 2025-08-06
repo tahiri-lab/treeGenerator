@@ -1057,8 +1057,14 @@ void createClusters(string treeRef, int nbSpecies, int nbArbres, double lowLimit
 
 int main(int nargs,char ** argv)
 {
-	if(nargs == 1){ printf("nope !\n"); exit(-1);}
-	//printf(argv[1]);
+	if(nargs <= 2){
+		printf("Wrong command format. Format must be :\n\t> ./treeGenerator -[m/L/C/N] x\n\t-m : generate x matrices with the same parameters.\n\nThe following options will generate every combinations possible with one fixed parameter. (Please be aware that they aren't fully operational yet)\n\t-L : fixed parameter = tree with x leaves\n\t-C : fixed parameter = clusters of size x\n\t-N :fixed parameter = noise range x (1 = [0-10], 2 = [10-25], 3 = [25-50], 4 = [50-75])\n");
+		exit(-1);}
+	/* ERROR MESSAGE FOR FUTUR */
+	
+	printf(argv[1]);
+	printf("cawcaw %d \n",nargs);
+	char* error = "cawcaw";
 	//int nb_Clusters = atoi(argv[1]), nb_Feuilles = atoi(argv[2]), noiseLvl = atoi(argv[3]), nbTrees = atoi(argv[4]);
 	//int nbTreesTot = (nbTrees+1) * nb_Clusters;
 	int nbarbres[10];
@@ -1079,14 +1085,17 @@ int main(int nargs,char ** argv)
 	FILE * outfile = fopen("test_auto2.txt","w");
 	//printf("On arrive ici au moins ?");
 	char okay = argv[1][1];
+	printf("\n %d and %d \n", 'm', okay);
 	
 	//Pour la génération de plusieurs matrices
 	int nbTreesTot = 15;
-	if(okay == 'm')
+	if(okay = 'm')
 	{
+		printf("on rentre dans la boucle ?");
 		// enchainement de cout/cin pour récupérer les infos
 		int nb_Clusters, leaves, noiseLvl;
 		int nb_repet = atoi(argv[2]);
+		printf("\non rentre dans la boucle ? \t %s \n", error);
 		cout<<"How many clusters ?";
 		cin>>nb_Clusters;
 		cout<<"How many leaves ?";
@@ -1097,17 +1106,17 @@ int main(int nargs,char ** argv)
 		highNoise = volNoise[noiseLvl];
 		for(int m = 1; m <= nb_repet; m++)
 		{
-			//cout<<"\nHello :)";
-			//printf("\t what ? %d", nb_Clusters);
+			cout<<"\nHello :)";
+			printf("\t what ? %d", m);
 			for(int i = 1; i <= nb_Clusters; i++)
 			{
 				createTree2(leaves, 1, "something", refTree);
 				printf("\n %s \n", refTree.c_str());
-				createClusters(refTree, leaves, 2, lowNoise, highNoise, allTrees);
+				//createClusters(refTree, leaves, 2, lowNoise, highNoise, allTrees);
 			}
 			printf("\n\n");
-			fprintf(outfile, "%d   %d   %d   0   %d", nbTreesTot, leaves, nb_Clusters, noiseLvl);
-			for( int i = 1; i <= nbTreesTot; i++)
+			//fprintf(outfile, "%d   %d   %d   0   %d", nbTreesTot, leaves, nb_Clusters, noiseLvl);
+			/*for( int i = 1; i <= nbTreesTot; i++)
 			{
 				fprintf(outfile, "\n");
 				printf("\n%s", allTrees[i-1].c_str());
@@ -1119,8 +1128,9 @@ int main(int nargs,char ** argv)
 				}
 			}
 			allTrees.clear();
-			fprintf(outfile, "\n");
+			fprintf(outfile, "\n");*/
 		}
+		printf("on a fini la boucle \n");
 	}
 
 	else{
